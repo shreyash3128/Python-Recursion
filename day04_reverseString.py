@@ -1,8 +1,7 @@
-string = str(input("Enter a string : "))
-rstring = ''
-i = 0
-while i <= len(string)-1:
+def reverseString (string, i = 0, rstring=''):
+    if i == len(string):
+        return rstring
     rstring = string[i] + rstring
-    i += 1
-
-print(f"Reversed of entered sting is {rstring}")
+    return reverseString(string, i+1, rstring)
+string = str(input("Enter a string : "))
+print(f"Reversed of entered sting is {reverseString(string)}")
