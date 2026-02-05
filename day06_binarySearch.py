@@ -1,23 +1,46 @@
-def binary_search(list, item):
-    first = 0
-    last = len(list) - 1
-    found = False
-    while (first <= last and not found):
-        mid = (first + last) // 2
-        if list[mid] == item:
-            found = True
-        else:
-            if item < list[mid]:
-                last = mid - 1
-            else:
-                first = mid + 1
-    return found
+# def binary_search(list, item):
+#     first = 0
+#     last = len(list) - 1
+#     found = False
+#     while (first <= last and not found):
+#         mid = (first + last) // 2
+#         if list[mid] == item:
+#             found = True
+#         else:
+#             if item < list[mid]:
+#                 last = mid - 1
+#             else:
+#                 first = mid + 1
+#     return found
+# numList = [4, 12, 7, 45, 52, 64, 71, 84, 27, 72]
+# print('List has the items: ', numList)
+# searchNum = int(input("Enter a number to search for: "))
+# found = binary_search(numList, searchNum)
+# if found == True:
+#     print(searchNum, "is present in the list")
+# else:
+#     print(searchNum, "is not present in the list")
+def binarySearch(arr, item, left, right):
+    if left > right:
+        return False
+    
+    center = (left + right) // 2
+    
+    if arr[center] == item:
+        return True
+    elif item < arr[center]:
+        return binarySearch(arr, item, left, center - 1)
+    else:
+        return binarySearch(arr, item, center + 1, right)
 
-numList = [4, 12, 7, 45, 52, 64, 71, 84, 27, 72]
-print('List has the items: ', numList)
-searchNum = int(input("Enter a number to search for: "))
-found = binary_search(numList, searchNum)
-if found == True:
-    print(searchNum, "is present in the list")
+numList = [4, 7, 12, 27, 45, 52, 64, 71, 72, 84]
+print('Sorted list:', numList)
+
+search_item = int(input("Enter a number to search for: "))
+
+found = binarySearch(numList, search_item, 0, len(numList) - 1)
+
+if found:
+    print(search_item, "is present in the list")
 else:
-    print(searchNum, "is not present in the list")
+    print(search_item, "is not present in the list")
