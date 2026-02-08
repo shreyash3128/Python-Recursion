@@ -5,3 +5,9 @@ def printNumbers(num):
     print(num,end=' ')
     return printNumbers(num-1)
 printNumbers(num)
+
+print()
+def printNum(num):
+    for i in range(num, 0, -1):
+        yield i
+print(list(printNum(num)))
